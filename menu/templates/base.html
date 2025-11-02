@@ -2,11 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tree Menu</title>
+    <meta charset="UTF-8">
+    <title>Menu Tree</title>
+    <style>
+    .active > a {
+      color: red;
+    }
+    </style>
   </head>
   <body>
+    <h2>Main Menu</h2>
     {% draw_menu 'main_menu' %}
+    <i>(Unactive items are hidden)</i>
+    <h2>Footer Menu</h2>
+    {% draw_menu 'footer_menu' %}
   </body>
 </html>

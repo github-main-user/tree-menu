@@ -1,6 +1,6 @@
-<li>
+<li class="{% if item.is_active %}active{% endif %}">
   <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
-  {% if item.children_list %}
+  {% if item.is_active and item.children_list %}
     <ul>
       {% for child in item.children_list %}
         {% include 'menu/menu_item.html' with item=child %}
@@ -8,3 +8,4 @@
     </ul>
   {% endif %}
 </li>
+

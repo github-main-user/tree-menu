@@ -5,14 +5,28 @@ from menu.models import MenuItem
 register = template.Library()
 
 
-@register.inclusion_tag("menu/menu.html")
-def draw_menu(menu_name):
+@register.inclusion_tag("menu/menu.html", takes_context=True)
+def draw_menu(context, menu_name):
+    request = context["request"]
+    current_path = request.path
+
     menu_items = MenuItem.objects.filter(menu__name=menu_name).select_related("parent")
 
     items_by_id = {item.id: item for item in menu_items}
 
+    active_item = None
     for item in menu_items:
         item.children_list = []
+        item.is_active = False
+        if item.get_absolute_url() == current_path:
+            item.is_active = True
+            active_item = item
+
+    if active_item:  # make all parents of an active item active
+        parent = items_by_id.get(active_item.parent_id)
+        while parent:
+            parent.is_active = True
+            parent = items_by_id.get(parent.parent_id)
 
     root_items = []
 
@@ -24,6 +38,5 @@ def draw_menu(menu_name):
         else:
             root_items.append(item)
 
-    return {
-        "root_items": root_items,
-    }
+    return {"root_items": root_items}
+
