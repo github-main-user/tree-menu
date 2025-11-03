@@ -1,0 +1,104 @@
+[
+{
+  "model": "menu.menu",
+  "pk": 6,
+  "fields": {
+    "name": "main_menu"
+  }
+},
+{
+  "model": "menu.menu",
+  "pk": 7,
+  "fields": {
+    "name": "footer_menu"
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 19,
+  "fields": {
+    "menu": 6,
+    "title": "Home",
+    "parent": null,
+    "url": "/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 20,
+  "fields": {
+    "menu": 6,
+    "title": "About",
+    "parent": null,
+    "url": "/about/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 21,
+  "fields": {
+    "menu": 6,
+    "title": "Team",
+    "parent": 20,
+    "url": "/about/team/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 22,
+  "fields": {
+    "menu": 6,
+    "title": "History",
+    "parent": 20,
+    "url": "/about/history/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 23,
+  "fields": {
+    "menu": 6,
+    "title": "Contact",
+    "parent": null,
+    "url": "/contact/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 24,
+  "fields": {
+    "menu": 6,
+    "title": "FAQ",
+    "parent": 23,
+    "url": "/contact/faq/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 25,
+  "fields": {
+    "menu": 7,
+    "title": "Privacy Policy",
+    "parent": null,
+    "url": "/privacy/",
+    "named_url": false
+  }
+},
+{
+  "model": "menu.menuitem",
+  "pk": 26,
+  "fields": {
+    "menu": 7,
+    "title": "Terms of Service",
+    "parent": null,
+    "url": "/terms/",
+    "named_url": false
+  }
+}
+]
