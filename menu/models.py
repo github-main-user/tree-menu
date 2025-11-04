@@ -4,21 +4,33 @@ from django.urls import NoReverseMatch, reverse
 
 
 class Menu(models.Model):
-    name = models.SlugField(unique=True)
+    name = models.SlugField(unique=True, help_text="Menu Name")
 
     def __str__(self) -> str:
         return self.name
 
 
 class MenuItem(models.Model):
-    menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name="items")
-    title = models.CharField(max_length=255)
+    menu = models.ForeignKey(
+        Menu,
+        on_delete=models.CASCADE,
+        related_name="items",
+        help_text="Menu which containt the item",
+    )
+    title = models.CharField(max_length=255, help_text="Title of the item")
     parent = models.ForeignKey(
-        "self", null=True, blank=True, on_delete=models.CASCADE, related_name="children"
+        "self",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="children",
+        help_text="Parent of this item",
     )
 
-    url = models.CharField(max_length=255)
-    named_url = models.BooleanField(default=False)
+    url = models.CharField(max_length=255, help_text="URL (can be named or absolute)")
+    named_url = models.BooleanField(
+        default=False, help_text="Is selected URL named or not"
+    )
 
     def get_absolute_url(self):
         if self.named_url:
