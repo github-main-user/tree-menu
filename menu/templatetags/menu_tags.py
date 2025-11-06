@@ -10,7 +10,7 @@ def draw_menu(context, menu_name):
     request = context["request"]
     current_path = request.path
 
-    menu_items = MenuItem.objects.filter(menu__name=menu_name).select_related("parent")
+    menu_items = MenuItem.objects.filter(menu__name=menu_name)
 
     items_by_id = {item.id: item for item in menu_items}
 
