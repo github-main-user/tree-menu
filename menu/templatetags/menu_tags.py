@@ -7,6 +7,18 @@ register = template.Library()
 
 @register.inclusion_tag("menu/menu.html", takes_context=True)
 def draw_menu(context, menu_name):
+    """
+    Renders a tree menu.
+
+    You can use it in template like this:
+
+    ```html
+    {% load menu_tags %}
+    <body>
+      {% draw_menu 'menu_name' %}
+    </body>
+    ```
+    """
     request = context["request"]
     current_path = request.path
 
@@ -39,4 +51,3 @@ def draw_menu(context, menu_name):
             root_items.append(item)
 
     return {"root_items": root_items}
-
