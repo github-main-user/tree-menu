@@ -51,6 +51,11 @@ class MenuItem(models.Model):
                     raise ValidationError("Circular dependency in the menu")
                 ancestor = ancestor.parent
 
+            if self.parent.menu != self.menu:
+                raise ValidationError(
+                    "Element and its parent can't belong to different menus"
+                )
+
     def __str__(self) -> str:
         return self.title
 
