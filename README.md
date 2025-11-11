@@ -56,3 +56,12 @@ python manage.py loaddata fixtures.json
 ```shell
 python manage.py runserver
 ```
+
+## Tests
+
+Menu models' logic is tested.
+
+To run tests use this command:
+```shell
+pytest
+```
